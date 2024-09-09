@@ -158,7 +158,7 @@ public class AddUserController {
                 alert.setTitle("Alert");
                 alert.setHeaderText("User has been added successfully.");
  
-// Show the alert and wait for the user to close it
+                // Show the alert and wait for the user to close it
                 alert.showAndWait();
 
                 App.setRoot("users");

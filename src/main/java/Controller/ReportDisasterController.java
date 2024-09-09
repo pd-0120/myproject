@@ -7,8 +7,8 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.control.MenuItem;
+
 /**
  * FXML Controller class
  *
@@ -16,43 +16,31 @@ import javafx.scene.control.MenuItem;
  */
 public class ReportDisasterController implements Initializable {
 
-
     @FXML
     private MenuItem menuHome;
     @FXML
-    private MenuItem menuUser;
-    @FXML
-    private MenuItem menuDisaster;
-    @FXML
-    private MenuItem menuFundRaising;
-    @FXML
     private MenuItem menuLogout;
+    @FXML
+    private MenuItem menuDisasterReport;
+    @FXML
+    private MenuItem menuDisasterReported;
+
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+    }
+
     @FXML
     private void onMenuHomeAction(ActionEvent event) throws IOException {
-        MenucController.dashboardPage();
+        App.setRoot("userDashboard");
     }
 
     @FXML
-    private void onMenuUserAcion(ActionEvent event) throws IOException {
-        MenucController.userListingPage();
-    }
-
-    @FXML
-    private void onMenuDisasterAction(ActionEvent event) throws IOException {
-        MenucController.disasterListingPage();
-    }
-
-    @FXML
-    private void onFundRaisingAction(ActionEvent event) throws IOException {
-        MenucController.fundingListingPage();
+    private void onMenuDisasterReportedAction(ActionEvent event) throws IOException {
+        App.setRoot("viewReportedDisaster");
     }
 
     @FXML
@@ -60,4 +48,8 @@ public class ReportDisasterController implements Initializable {
         MenucController.logout();
     }
 
+    @FXML
+    private void onMenuReportDisasterAction(ActionEvent event) throws IOException {
+        App.setRoot("reportDisaster");
+    }
 }

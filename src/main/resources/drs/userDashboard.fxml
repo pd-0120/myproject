@@ -34,7 +34,7 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Disasters">
                             <items>
-                                <MenuItem fx:id="menuDisasterReport" mnemonicParsing="false" onAction="#onMenuDisasterAction" text="Report Disaster" />
+                                <MenuItem fx:id="menuDisasterReport" mnemonicParsing="false" onAction="#onMenuReportDisasterAction" text="Report Disaster" />
                         <MenuItem fx:id="menuDisasterReported" mnemonicParsing="false" onAction="#onMenuDisasterReportedAction" text="View reported disasters" />
                             </items>
                         </Menu>
