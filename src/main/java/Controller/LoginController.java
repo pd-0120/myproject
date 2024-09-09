@@ -1,6 +1,5 @@
 package Controller;
 
-import static Controller.RegisterController.isEmailInCsv;
 import static Controller.RegisterController.isValidEmail;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;

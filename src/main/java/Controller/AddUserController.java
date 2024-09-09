@@ -5,6 +5,7 @@ import static Controller.RegisterController.isValidEmail;
 import Enum.Role;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
+import com.opencsv.exceptions.CsvException;
 import drs.App;
 import java.io.File;
 import java.io.FileWriter;
@@ -21,13 +22,13 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+
 /**
  * FXML Controller class
  *
  * @author PJ
  */
 public class AddUserController {
-
 
     @FXML
     private TextField phoneNumber;
@@ -57,20 +58,21 @@ public class AddUserController {
     private Label errorLabel;
     @FXML
     private Label successMessasgelabel;
+
     /**
      * Initializes the controller class.
      */
     public void initialize() {
         role.getItems().addAll(Role.ADMIN.getDisplayName(), Role.GUEST.getDisplayName(), Role.SUPPORT.getDisplayName(), Role.USER.getDisplayName());
-    }    
-    
+    }
+
     @FXML
     private void onMenuHomeAction(ActionEvent event) throws IOException {
         MenucController.dashboardPage();
     }
 
     @FXML
-    private void onMenuUserAcion(ActionEvent event) throws IOException {
+    private void onMenuUserAcion() throws IOException {
         MenucController.userListingPage();
     }
 
@@ -90,7 +92,7 @@ public class AddUserController {
     }
 
     @FXML
-    private void onAddUserSubmitBtn(MouseEvent event) throws CsvValidationException {
+    private void onAddUserSubmitBtn(MouseEvent event) throws CsvValidationException, CsvException {
         String csvFile = "users.csv";
         boolean isValidUser = true;
         String errorString = "";
@@ -154,14 +156,13 @@ public class AddUserController {
 
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Alert");
-                alert.setHeaderText("User has been registered successfully.");
-                alert.setContentText("Click to redirect on use listing page.");
-
-                // Show the alert and wait for the user to close it
+                alert.setHeaderText("User has been added successfully.");
+ 
+// Show the alert and wait for the user to close it
                 alert.showAndWait();
 
-                System.out.println("Data written successfully to " + csvFile);
                 App.setRoot("users");
+                onMenuUserAcion();
             } catch (IOException e) {
                 System.out.println(e);
             }

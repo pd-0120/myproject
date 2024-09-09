@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  * FXML Controller class
@@ -49,37 +51,16 @@ public class UserController {
     private MenuItem menuLogout;
     @FXML
     private Button addUserBtn;
+    private ObservableList<User> userData;
 
     /**
      * Initializes the controller class.
      */
     @FXML
     public void initialize() throws CsvValidationException, CsvException {
-        String csvFile = "users.csv";
-        File file = new File(csvFile);
+        userData = FXCollections.observableArrayList();
 
-        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
-        roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
-        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
-
-        if (file.exists()) {
-            try (CSVReader reader = new CSVReader(new FileReader(csvFile))) {
-                // Skip the header row
-                reader.readNext();
-
-                List<String[]> rows = reader.readAll();
-
-                // Process the data
-                for (String[] row : rows) {
-                    User user = new User(row[0], row[1], row[2], row[3], row[4]);
-                    userTable.getItems().add(user);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        listUsers();
     }
 
     @FXML
@@ -110,5 +91,34 @@ public class UserController {
     @FXML
     private void onAddUserBtnClick(MouseEvent event) throws IOException {
         App.setRoot("addUser");
+    }
+
+    public void listUsers() throws CsvValidationException, CsvException {
+        String csvFile = "users.csv";
+        File file = new File(csvFile);
+
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        roleColumn.setCellValueFactory(new PropertyValueFactory<>("role"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+
+        if (file.exists()) {
+            try (CSVReader reader = new CSVReader(new FileReader(csvFile))) {
+                // Skip the header row
+                reader.readNext();
+
+                List<String[]> rows = reader.readAll();
+
+                // Process the data
+                for (String[] row : rows) {
+                    User user = new User(row[0], row[1], row[2], row[3], row[4]);
+                    userData.add(user);
+                }
+                userTable.setItems(userData);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
