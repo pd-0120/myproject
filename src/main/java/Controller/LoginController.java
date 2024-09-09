@@ -64,30 +64,24 @@ public class LoginController implements Initializable {
         userPassword = password.getText();
 
         String csvFile = "users.csv";
-        boolean isValidUser = true;
         String errorString = "";
         List<String> errors = new ArrayList<>();
         errorLabel.setText("");
         File file = new File(csvFile);
 
         if (email.getText().isEmpty()) {
-            isValidUser = false;
             errors.add("Email can not be left empty");
         } else if (!isValidEmail(email.getText())) {
-            isValidUser = false;
             errors.add("Email is not valid");
         }
 
         if (password.getText().isEmpty()) {
-            isValidUser = false;
             errors.add("Password can not be left empty");
         } else if (password.getText().length() < 5) {
-            isValidUser = false;
             errors.add("Password must be atleast 5 characters");
         }
 
         if (!checkValidUser()) {
-            isValidUser = false;
             errors.add("User id password does not match.");
         }
 

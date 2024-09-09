@@ -11,5 +11,6 @@ module drs {
     exports Controller;
     exports Enum;
     exports Models;
+    exports Utils;
     exports drs;
 }
