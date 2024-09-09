@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import drs.App;
+import drs.AuthenticationSession;
 import java.io.IOException;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
@@ -16,7 +17,7 @@ import javafx.scene.input.MouseEvent;
  *
  * @author PJ
  */
-public class UserDashboardController implements Initializable {
+public class UserDashboardController{
 
     @FXML
     private MenuItem menuHome;
@@ -34,9 +35,9 @@ public class UserDashboardController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    @FXML
+    public void initialize() {
+        System.out.println(AuthenticationSession.isLoggedIn());
     }
 
     @FXML

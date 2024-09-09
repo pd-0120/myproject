@@ -92,8 +92,9 @@ public class LoginController implements Initializable {
             }
             errorLabel.setText(errorString);
         } else {
-            AuthenticationSession as = new AuthenticationSession(userEmail, userRole, userFirstName, userLastName);
-
+            AuthenticationSession.startSession(userEmail, userRole, userFirstName, userLastName);
+            
+            
             if (userRole.equals(Role.ADMIN.getDisplayName())) {
                 App.setRoot("dashboard");
             } else if (userRole.equals(Role.USER.getDisplayName()))  {

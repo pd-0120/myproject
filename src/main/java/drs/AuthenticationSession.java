@@ -20,6 +20,9 @@ public class AuthenticationSession {
         this.lastName = ln;
     }
 
+    public AuthenticationSession() {
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
