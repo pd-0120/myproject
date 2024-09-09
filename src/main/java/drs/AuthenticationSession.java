@@ -10,16 +10,36 @@ public class AuthenticationSession {
 
     private String email;
     private String role;
+    private String firstName;
+    private String lastName;
 
-    public AuthenticationSession(String email, String role) {
+    public AuthenticationSession(String email, String role, String fn, String ln) {
         this.email = email;
         this.role = role;
+        this.firstName = fn;
+        this.lastName = ln;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     // Method to initialize the session
-    public static void startSession(String email, String role) {
+    public static void startSession(String email, String role, String fn, String ln) {
         if (instance == null) {
-            instance = new AuthenticationSession(email, role);
+            instance = new AuthenticationSession(email, role, fn, ln);
         }
     }
 
