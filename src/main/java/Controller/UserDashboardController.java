@@ -63,5 +63,4 @@ public class UserDashboardController implements Initializable {
     private void onMenuReportDisasterAction(ActionEvent event) throws IOException {
         App.setRoot("reportDisaster");
     }
-
 }
