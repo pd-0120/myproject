@@ -4,6 +4,7 @@ import static Controller.RegisterController.isValidEmail;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 import drs.App;
+import Enum.Role;
 import drs.AuthenticationSession;
 import java.io.File;
 import java.io.FileReader;
@@ -14,7 +15,6 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -99,8 +99,12 @@ public class LoginController implements Initializable {
             errorLabel.setText(errorString);
         } else {
             AuthenticationSession as = new AuthenticationSession(userEmail, userRole, userFirstName, userLastName);
-            
-            App.setRoot("dashboard");
+
+            if (userRole.equals(Role.ADMIN.getDisplayName())) {
+                App.setRoot("dashboard");
+            } else if (userRole.equals(Role.USER.getDisplayName()))  {
+                App.setRoot("userDashboard");
+            }
         }
     }
 
@@ -115,7 +119,9 @@ public class LoginController implements Initializable {
             while ((nextLine = reader.readNext()) != null) {
                 String email = nextLine[2];      // Email is at index 2
                 String password = nextLine[5];   // Password is at index 5
-
+                userFirstName = nextLine[0];
+                userLastName = nextLine[1];
+                userRole = nextLine[3];
                 // Compare the email and password with the provided input
                 if (email.equals(userEmail) && password.equals(userPassword)) {
                     return true;  // Match found
