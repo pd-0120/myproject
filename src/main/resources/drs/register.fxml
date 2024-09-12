@@ -62,13 +62,13 @@
             <Label text="Last Name" GridPane.rowIndex="1" />
             <Label text="Email" GridPane.rowIndex="2" />
             <Label text="Password" GridPane.rowIndex="3" />
-            <TextField fx:id="lastName" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="firstName" GridPane.columnIndex="1" />
-            <TextField fx:id="email" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="phoneNumber" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="lastName" promptText="User Last name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="firstName" promptText="User first Name" GridPane.columnIndex="1" />
+            <TextField fx:id="email" promptText="Valid email id" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="phoneNumber" promptText="Valid phone number" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             <Label text="Phone Number" GridPane.rowIndex="4" />
             <Button fx:id="registerBtn" mnemonicParsing="false" onMouseClicked="#onRegisterBtnClick" prefHeight="26.0" prefWidth="114.0" text="Register" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <PasswordField fx:id="password" promptText="Valid Password" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
       <Label fx:id="errorLabel" prefHeight="166.0" prefWidth="210.0" textFill="RED" />

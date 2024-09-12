@@ -78,14 +78,15 @@ public class RegisterController extends App implements Initializable {
         List<String> errors = new ArrayList<>();
         errorLabel.setText("");
         File file = new File(csvFile);
-
+        boolean isFileExists = file.exists();
+        
         if (email.getText().isEmpty()) {
             isValidUser = false;
             errors.add("Email can not be left empty");
         } else if (!isValidEmail(email.getText())) {
             isValidUser = false;
             errors.add("Email is not valid");
-        } else if (file.exists() && isEmailInCsv(csvFile, email.getText())) {
+        } else if (isFileExists && isEmailInCsv(csvFile, email.getText())) {
             isValidUser = false;
             errors.add("Email is exists. Please use different email.");
         }
@@ -128,7 +129,7 @@ public class RegisterController extends App implements Initializable {
             // Writing data to the CSV file
             try (CSVWriter writer = new CSVWriter(new FileWriter(csvFile, true))) {
                 // Write the header
-                if (!file.exists()) {
+                if (!isFileExists) {
                     writer.writeNext(header);
                 }
                 writer.writeNext(user);

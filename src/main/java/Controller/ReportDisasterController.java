@@ -102,8 +102,8 @@ public class ReportDisasterController {
         String errorString = "";
         List<String> errors = new ArrayList<>();
         errorLabel.setText(" ");
-        System.out.print(date.getValue());
-        System.out.print(category.getValue());
+        
+        
         if (name.getText().isEmpty() || name.getText().isBlank() || name.getText().length() < 5) {
             errors.add("Make sure that the name is not empty and has more than 5 characters");
         }

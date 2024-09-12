@@ -57,7 +57,7 @@
                </GridPane.margin>
             </Label>
             <TextField fx:id="email" promptText="User Email ID" GridPane.columnIndex="1" />
-            <PasswordField fx:id="password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <PasswordField fx:id="password" promptText="User password" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
       <Label fx:id="errorLabel" textFill="RED" />

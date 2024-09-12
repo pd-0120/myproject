@@ -1,11 +1,9 @@
 package Utils;
 
 import com.opencsv.CSVWriter;
-import drs.App;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import javafx.scene.control.Alert;
 
 /**
  *
@@ -24,11 +22,15 @@ public class WriteToFile {
     }
 
     public boolean writeData() {
-        File file = new File(fileName);
+        File inputFile = new File(fileName);
+        boolean isFileExists = inputFile.exists();
         // Writing data to the CSV file
         try (CSVWriter writer = new CSVWriter(new FileWriter(fileName, true))) {
             // Write the header
-            if (!file.exists()) {
+            System.out.println("File Status\n");
+            System.out.println(inputFile.exists());
+            System.out.println(inputFile.isFile());
+            if (!isFileExists) {
                 writer.writeNext(fileHeader);
             }
             writer.writeNext(writeData);
