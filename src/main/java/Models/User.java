@@ -12,7 +12,8 @@ public class User {
     private String role;
     private String phoneNumber;
     private String password;
-    
+    private String department;
+
     public User(String firstName, String lastName, String email, String role, String phoneNumber, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -22,6 +23,16 @@ public class User {
         this.password = password;
     }
 
+    public User(String firstName, String lastName, String email, String role, String phoneNumber, String password, String department) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.role = role;
+        this.phoneNumber = phoneNumber;
+        this.password = password;
+        this.department = department;
+    }
+
     public User(String firstName, String lastName, String email, String role, String phoneNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -29,7 +40,7 @@ public class User {
         this.role = role;
         this.phoneNumber = phoneNumber;
     }
-    
+
     public User() {
     }
 
@@ -71,7 +82,7 @@ public class User {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    } 
+    }
 
     public void setPassword(String password) {
         this.password = password;
@@ -80,5 +91,20 @@ public class User {
     public String getPassword() {
         return password;
     }
-    
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
+    }
+
+    public String getUserFullName() {
+        return this.firstName + " " + this.lastName;
+    }
+
+    public String getOrganisationFullName() {
+        return this.firstName + " " + this.lastName + "(" + this.department + ")";
+    }
 }

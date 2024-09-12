@@ -122,7 +122,7 @@ public class RegisterController extends App implements Initializable {
         }
 
         // Data to be written to the CSV file
-        String[] header = {"First Name", "Last Name", "Email", "Role", "Phone", "Password"};
+        String[] header = {"First Name", "Last Name", "Email", "Role", "Phone", "Password", "Department"};
         String[] user = {firstName.getText(), lastName.getText(), email.getText(), Role.USER.getDisplayName(), phoneNumber.getText(), password.getText()};
 
         if (isValidUser) {

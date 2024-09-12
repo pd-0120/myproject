@@ -18,7 +18,9 @@ public class Disaster {
     private String date;
     private String reportedBy;
     private String status;
-
+    private String priority;
+    private String associatedDepartment;
+    
     public Disaster(String name, String description, String location, String damage, String category, String risk, String date, String reportedBy, String status) {
         this.name = name;
         this.description = description;

@@ -15,6 +15,7 @@ Enum\Role.class
 Models\Dashboard.class
 Interface\IModel.class
 Controller\ReportDisasterController.class
+Enum\DisasterPriority.class
 Models\Disaster.class
 Controller\UserController.class
 Controller\FundingController.class
@@ -23,3 +24,4 @@ drs\App.class
 Controller\LoginController.class
 Models\DisasterReport.class
 Controller\DisasterController.class
+Enum\DisasterDepartment.class

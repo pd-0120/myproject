@@ -2,6 +2,7 @@ package Controller;
 
 import static Controller.RegisterController.isEmailInCsv;
 import static Controller.RegisterController.isValidEmail;
+import Enum.DisasterDepartment;
 import Enum.Role;
 import com.opencsv.CSVWriter;
 import com.opencsv.exceptions.CsvValidationException;
@@ -56,14 +57,26 @@ public class AddUserController {
     private ComboBox<String> role;
     @FXML
     private Label errorLabel;
+    
     @FXML
-    private Label successMessasgelabel;
+    private ComboBox<String> department;
 
     /**
      * Initializes the controller class.
      */
     public void initialize() {
-        role.getItems().addAll(Role.ADMIN.getDisplayName(), Role.GUEST.getDisplayName(), Role.SUPPORT.getDisplayName(), Role.USER.getDisplayName());
+        role.getItems().addAll(Role.ADMIN.getDisplayName(), 
+                               Role.GUEST.getDisplayName(), 
+                               Role.SUPPORT.getDisplayName(), 
+                               Role.USER.getDisplayName());
+        department.getItems().addAll(
+                DisasterDepartment.FIRE.getDisplayName(), 
+                DisasterDepartment.CYBER.getDisplayName(), 
+                DisasterDepartment.FINANCE.getDisplayName(),
+                DisasterDepartment.FORENSIC.getDisplayName(),
+                DisasterDepartment.MEDICAL.getDisplayName(),
+                DisasterDepartment.POLICE.getDisplayName()
+        );
     }
 
     @FXML
@@ -143,8 +156,8 @@ public class AddUserController {
         }
 
         // Data to be written to the CSV file
-        String[] header = {"First Name", "Last Name", "Email", "Role", "Phone", "Password"};
-        String[] user = {firstName.getText(), lastName.getText(), email.getText(), role.getValue(), phoneNumber.getText(), password.getText()};
+        String[] header = {"First Name", "Last Name", "Email", "Role", "Phone", "Password", "Department"};
+        String[] user = {firstName.getText(), lastName.getText(), email.getText(), role.getValue(), phoneNumber.getText(), password.getText(), department.getValue()};
 
         if (isValidUser) {
             // Writing data to the CSV file
@@ -163,7 +176,6 @@ public class AddUserController {
                 alert.showAndWait();
 
                 App.setRoot("addUser");
-                onMenuUserAcion();
             } catch (IOException e) {
                 System.out.println(e);
             }
