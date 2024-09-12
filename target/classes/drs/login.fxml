@@ -28,7 +28,7 @@
          <children>
             <Text fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="User Login " textAlignment="CENTER">
                <font>
-                  <Font size="40.0" />
+                  <Font size="25.0" />
                </font>
             </Text>
             <Button fx:id="registerBtn" mnemonicParsing="false" onMouseClicked="#onRegisterBtnClick" text="Not registered yet ? Register here." GridPane.columnIndex="1" />

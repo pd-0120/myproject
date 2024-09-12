@@ -66,7 +66,7 @@
             <children>
                 <Text fill="RED" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Fundings" wrappingWidth="615.7366828918457">
                     <font>
-                        <Font size="40.0" />
+                        <Font size="25.0" />
                     </font>
                 </Text>
             </children>

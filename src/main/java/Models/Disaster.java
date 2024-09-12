@@ -31,6 +31,17 @@ public class Disaster {
         this.status = status;
     }
 
+        
+    public Disaster(String name, String description, String location, String damage, String category, String risk, String date, String status) {
+        this.name = name;
+        this.description = description;
+        this.location = location;
+        this.damage = damage;
+        this.category = category;
+        this.risk = risk;
+        this.date = date;
+        this.status = status;
+    }
     public String getName() {
         return name;
     }

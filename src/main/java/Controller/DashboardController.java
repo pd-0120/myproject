@@ -99,7 +99,8 @@ public class DashboardController extends App {
     }
     
     @FXML
-    private void onDisasterReportClick(MouseEvent event) {
+    private void onDisasterReportClick(MouseEvent event) throws IOException {
+        MenucController.disasterListingPage();
     }
     
     @FXML
@@ -107,10 +108,12 @@ public class DashboardController extends App {
     }
     
     @FXML
-    private void onActiveDisasterBtnClick(MouseEvent event) {
+    private void onActiveDisasterBtnClick(MouseEvent event) throws IOException {
+        MenucController.fundingListingPage();
     }
     
     @FXML
-    private void onFundBtnClick(MouseEvent event) {
+    private void onFundBtnClick(MouseEvent event) throws IOException {
+        MenucController.disasterListingPage();
     }
 }
