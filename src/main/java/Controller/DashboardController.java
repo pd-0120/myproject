@@ -56,6 +56,16 @@ public class DashboardController extends App {
         }
         userBtn.setText("Total Users : " + userRowCount);
         
+        String disasterFileName = "disasters.csv";
+        int disasterRowCount = 0;
+        File disasterFile = new File(disasterFileName);
+        if (disasterFile.exists()) {
+            try (CSVReader reader = new CSVReader(new FileReader(disasterFileName))) {
+                disasterRowCount = reader.readAll().size() - 1;
+            }
+        }
+        disasterReportBtn.setText("Total Disasters reproted : " + disasterRowCount);
+        
     }
     
     @FXML

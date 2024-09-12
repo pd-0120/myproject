@@ -30,7 +30,7 @@
          <children>
             <Text fill="RED" fontSmoothingType="LCD" strokeType="OUTSIDE" strokeWidth="0.0" text="Register" wrappingWidth="333.3366584777832">
                <font>
-                  <Font size="40.0" />
+                  <Font size="25.0" />
                </font>
             </Text>
             <Button fx:id="loginBtn" mnemonicParsing="false" onMouseClicked="#onLoginBtnClick" text="Already have account ? Login here." GridPane.columnIndex="1" />
