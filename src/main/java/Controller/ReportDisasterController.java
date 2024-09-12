@@ -128,7 +128,7 @@ public class ReportDisasterController {
             errors.add("Make sure that the description is not empty and has more than 20 characters");
         }
         if (errors.isEmpty()) {
-            String[] disaster = {name.getText(), description.getText(), area.getText(), damage.getText(), category.getValue(), risk.getText(), date.getValue().toString(), AuthenticationSession.getInstance().getEmail(), DisasterStatus.PENDING.getDisplayName()};
+            String[] disaster = {name.getText(), description.getText(), area.getText(), damage.getText(), category.getValue(), risk.getText(), date.getValue().toString(), AuthenticationSession.getInstance().getEmail(), DisasterStatus.PENDING.getDisplayName(), " ", " ", " "};
 
             WriteToFile dataWriter = new WriteToFile(fileName, fileHeader, disaster);
             boolean isDataWritten = dataWriter.writeData();

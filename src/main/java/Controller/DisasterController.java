@@ -117,12 +117,17 @@ public class DisasterController {
         updateFieldPanel.setVisible(false);
         disasterTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, disaster) -> {
             if (disaster != null) {
-                selectedIndexValue = disasterTable.getSelectionModel().getSelectedIndex();
+                selectedIndexValue = disasterTable.getSelectionModel().getSelectedIndex() + 1;
                 updateFieldPanel.setVisible(true);
                 selectedDisaster = disaster;
+                
                 nameField.setText(selectedDisaster.getName());
                 descriptionField.setText(selectedDisaster.getDescription());
                 statusField.setValue(selectedDisaster.getStatus());
+                responseToDisaster.setText(selectedDisaster.getResponseToDisaster());
+                priority.setValue(selectedDisaster.getPriority());
+                department.setValue(selectedDisaster.getAssociatedDepartment());
+                
             }
         });
 
@@ -220,7 +225,7 @@ public class DisasterController {
                 int rowIndex = selectedIndexValue; // Remember index is 0-based
                 if (rowIndex < csvData.size()) {
                     String[] row = csvData.get(rowIndex); // Get the row at the specified index
-                    System.err.println(row);
+                    System.err.println(row.length);
                     row[0] = selectedDisaster.getName();
                     row[1] = selectedDisaster.getDescription();
                     row[8] = selectedDisaster.getStatus();
