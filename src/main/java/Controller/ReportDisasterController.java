@@ -55,7 +55,7 @@ public class ReportDisasterController {
     @FXML
     private Label errorLabel;
     private final String fileName = "disasters.csv";
-    private final String[] fileHeader = {"name", "description", "location", "damage", "category", "risk", "date", "reportedBy", "status"};
+    private final String[] fileHeader = {"name", "description", "location", "damage", "category", "risk", "date", "reportedBy", "status", "Priority", "Associated Department", "Response to disaster"};
 
     /**
      * Initializes the controller class.

@@ -9,6 +9,7 @@ package Models;
  * @author PJ
  */
 public class Disaster {
+
     private String name;
     private String description;
     private String location;
@@ -20,8 +21,20 @@ public class Disaster {
     private String status;
     private String priority;
     private String associatedDepartment;
-    
-    public Disaster(String name, String description, String location, String damage, String category, String risk, String date, String reportedBy, String status) {
+    private String responseToDisaster;
+
+    public Disaster(String name,
+            String description,
+            String location,
+            String damage,
+            String category,
+            String risk,
+            String date,
+            String reportedBy,
+            String status,
+            String priority,
+            String associatedDepartment,
+            String responseToDisaster) {
         this.name = name;
         this.description = description;
         this.location = location;
@@ -31,9 +44,11 @@ public class Disaster {
         this.date = date;
         this.reportedBy = reportedBy;
         this.status = status;
+        this.priority = priority;
+        this.associatedDepartment = associatedDepartment;
+        this.responseToDisaster = responseToDisaster;
     }
 
-        
     public Disaster(String name, String description, String location, String damage, String category, String risk, String date, String status) {
         this.name = name;
         this.description = description;
@@ -44,6 +59,31 @@ public class Disaster {
         this.date = date;
         this.status = status;
     }
+    
+    public String getPriority() {
+        return priority;
+    }
+
+    public void setPriority(String priority) {
+        this.priority = priority;
+    }
+
+    public String getAssociatedDepartment() {
+        return associatedDepartment;
+    }
+
+    public void setAssociatedDepartment(String associatedDepartment) {
+        this.associatedDepartment = associatedDepartment;
+    }
+
+    public String getResponseToDisaster() {
+        return responseToDisaster;
+    }
+
+    public void setResponseToDisaster(String responseToDisaster) {
+        this.responseToDisaster = responseToDisaster;
+    }
+
     public String getName() {
         return name;
     }

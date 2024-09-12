@@ -2,6 +2,8 @@ package Controller;
 
 import Models.Disaster;
 import Enum.DisasterStatus;
+import Enum.DisasterPriority;
+import Enum.DisasterDepartment;
 import Utils.ShowAlert;
 import com.opencsv.CSVWriter;
 import com.opencsv.CSVReader;
@@ -81,12 +83,35 @@ public class DisasterController {
     @FXML
     private Label errorLabel;
     private int selectedIndexValue;
+    @FXML
+    private TextField responseToDisaster;
+    @FXML
+    private ComboBox<String> priority;
+    @FXML
+    private ComboBox<String> department;
 
     /**
      * Initializes the controller class.
      */
     public void initialize() throws CsvValidationException, CsvException {
-        statusField.getItems().addAll(DisasterStatus.APPROVED.getDisplayName(), DisasterStatus.PENDING.getDisplayName(), DisasterStatus.REJECTED.getDisplayName());
+        statusField.getItems().addAll(
+                DisasterStatus.APPROVED.getDisplayName(),
+                DisasterStatus.PENDING.getDisplayName(),
+                DisasterStatus.REJECTED.getDisplayName());
+
+        priority.getItems().addAll(
+                DisasterPriority.HIGH.getDisplayName(),
+                DisasterPriority.MEDIUM.getDisplayName(),
+                DisasterPriority.LOW.getDisplayName());
+
+        department.getItems().addAll(
+                DisasterDepartment.CYBER.getDisplayName(),
+                DisasterDepartment.FINANCE.getDisplayName(),
+                DisasterDepartment.FIRE.getDisplayName(),
+                DisasterDepartment.FORENSIC.getDisplayName(),
+                DisasterDepartment.MEDICAL.getDisplayName(),
+                DisasterDepartment.POLICE.getDisplayName());
+
         disasterData = FXCollections.observableArrayList();
         listDisasters();
         updateFieldPanel.setVisible(false);
@@ -179,6 +204,9 @@ public class DisasterController {
         selectedDisaster.setName(name);
         selectedDisaster.setDescription(description);
         selectedDisaster.setStatus(statusField.getValue());
+        selectedDisaster.setResponseToDisaster(responseToDisaster.getText());
+        selectedDisaster.setPriority(priority.getValue());
+        selectedDisaster.setAssociatedDepartment(department.getValue());
 
         if (errors.isEmpty()) {
             String filePath = "disasters.csv";
@@ -192,9 +220,14 @@ public class DisasterController {
                 int rowIndex = selectedIndexValue; // Remember index is 0-based
                 if (rowIndex < csvData.size()) {
                     String[] row = csvData.get(rowIndex); // Get the row at the specified index
+                    System.err.println(row);
                     row[0] = selectedDisaster.getName();
                     row[1] = selectedDisaster.getDescription();
                     row[8] = selectedDisaster.getStatus();
+                    row[9] = selectedDisaster.getPriority();
+                    row[10] = selectedDisaster.getAssociatedDepartment();
+                    row[11] = selectedDisaster.getResponseToDisaster();
+
                     csvData.set(rowIndex, row); // Update the row in the list
                 } else {
                     System.out.println("Row index out of bounds.");
@@ -207,7 +240,7 @@ public class DisasterController {
 
                 ShowAlert showAlert = new ShowAlert(Alert.AlertType.INFORMATION, "success", "Disaster report", "Disaster updated sucessfully.");
                 disasterTable.refresh();
-                
+
                 updateFieldPanel.setVisible(false);
                 disasterTable.getSelectionModel().clearSelection();
             } catch (IOException e) {

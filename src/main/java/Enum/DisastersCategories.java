@@ -13,11 +13,12 @@ public enum DisastersCategories {
     FIRE("FIRE"),
     EARTHQUAKE("EARTHQUAKE"),
     FLOOD("FLOOD"),
+    CYBER("CYBER"),
     HURRICANE("HURRICANE"),
     VOLCANIC_ERUPTION("VOLCANIC_ERUPTION"),
     TORNADO("TORNADO"),
     TSUNAMI("TSUNAMI");
-
+    
     private final String displayName;
 
     // Constructor

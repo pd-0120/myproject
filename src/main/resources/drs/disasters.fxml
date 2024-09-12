@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="695.0" prefWidth="790.0" spacing="20.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DisasterController">
+<VBox alignment="CENTER" prefHeight="759.0" prefWidth="793.0" spacing="20.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DisasterController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -116,6 +116,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Label prefHeight="18.0" prefWidth="76.0" text="Name" />
@@ -124,7 +126,13 @@
             <ComboBox fx:id="statusField" prefWidth="150.0" promptText="Select status" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextField fx:id="nameField" GridPane.columnIndex="1" />
             <TextField fx:id="descriptionField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button fx:id="updateBtn" mnemonicParsing="false" onMouseClicked="#onUpdateBtnClick" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Button fx:id="updateBtn" mnemonicParsing="false" onMouseClicked="#onUpdateBtnClick" text="Update" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Label prefHeight="18.0" prefWidth="116.0" text="Disaster Response" GridPane.rowIndex="3" />
+            <TextField fx:id="responseToDisaster" promptText="Response to disaster" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label prefHeight="18.0" prefWidth="113.0" text="Priority" GridPane.rowIndex="4" />
+            <ComboBox fx:id="priority" prefWidth="150.0" promptText="Priority" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label prefHeight="18.0" prefWidth="166.0" text="Involve department" GridPane.rowIndex="5" />
+            <ComboBox fx:id="department" prefWidth="150.0" promptText="Assign Department" GridPane.columnIndex="1" GridPane.rowIndex="5" />
          </children>
       </GridPane>
       <Label fx:id="errorLabel" prefHeight="18.0" prefWidth="557.0" textFill="RED" />
