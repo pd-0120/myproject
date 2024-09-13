@@ -1,7 +1,9 @@
 package Controller;
 
 import static Controller.RegisterController.isEmailInCsv;
+import static Controller.RegisterController.isValidAustralianPhoneNumber;
 import static Controller.RegisterController.isValidEmail;
+import static Controller.RegisterController.isValidName;
 import Enum.DisasterDepartment;
 import Enum.Role;
 import com.opencsv.CSVWriter;
@@ -57,7 +59,7 @@ public class AddUserController {
     private ComboBox<String> role;
     @FXML
     private Label errorLabel;
-    
+
     @FXML
     private ComboBox<String> department;
 
@@ -65,13 +67,13 @@ public class AddUserController {
      * Initializes the controller class.
      */
     public void initialize() {
-        role.getItems().addAll(Role.ADMIN.getDisplayName(), 
-                               Role.GUEST.getDisplayName(), 
-                               Role.SUPPORT.getDisplayName(), 
-                               Role.USER.getDisplayName());
+        role.getItems().addAll(Role.ADMIN.getDisplayName(),
+                Role.GUEST.getDisplayName(),
+                Role.SUPPORT.getDisplayName(),
+                Role.USER.getDisplayName());
         department.getItems().addAll(
-                DisasterDepartment.FIRE.getDisplayName(), 
-                DisasterDepartment.CYBER.getDisplayName(), 
+                DisasterDepartment.FIRE.getDisplayName(),
+                DisasterDepartment.CYBER.getDisplayName(),
                 DisasterDepartment.FINANCE.getDisplayName(),
                 DisasterDepartment.FORENSIC.getDisplayName(),
                 DisasterDepartment.MEDICAL.getDisplayName(),
@@ -113,7 +115,7 @@ public class AddUserController {
         errorLabel.setText("");
         File file = new File(csvFile);
         boolean isFileExists = file.exists();
-        
+
         if (email.getText().isEmpty()) {
             isValidUser = false;
             errors.add("Email can not be left empty");
@@ -134,11 +136,23 @@ public class AddUserController {
             isValidUser = false;
             errors.add("Last Name can not be left empty");
         }
+        if (!isValidName(firstName.getText())) {
+            isValidUser = false;
+            errors.add("Invalid first name");
+        }
+        if (!isValidName(lastName.getText())) {
+            isValidUser = false;
+            errors.add("Invalid last name");
+        }
         if (phoneNumber.getText().isEmpty()) {
             isValidUser = false;
             errors.add("Phone number can not be left empty");
         }
 
+        if (!isValidAustralianPhoneNumber(phoneNumber.getText())) {
+            isValidUser = false;
+            errors.add("Invalid phone number");
+        }
         if (password.getText().isEmpty()) {
             isValidUser = false;
             errors.add("Password can not be left empty");
@@ -171,7 +185,7 @@ public class AddUserController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Alert");
                 alert.setHeaderText("User has been added successfully.");
- 
+
                 // Show the alert and wait for the user to close it
                 alert.showAndWait();
 

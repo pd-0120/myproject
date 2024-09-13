@@ -34,8 +34,8 @@ public class RegisterController extends App implements Initializable {
     private static final String EMAIL_PATTERN
             = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@"
             + "(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-
-    private static final Pattern emailPattern = Pattern.compile(EMAIL_PATTERN);
+    private static final String AU_PHONE_REGEX = "^(\\+61|0)[2-478](\\d{8})$";
+    private static final String NAME_REGEX = "^[A-Za-z]+([ A-Za-z]+)*$";
 
     @FXML
     private Button loginBtn;
@@ -79,7 +79,7 @@ public class RegisterController extends App implements Initializable {
         errorLabel.setText("");
         File file = new File(csvFile);
         boolean isFileExists = file.exists();
-        
+
         if (email.getText().isEmpty()) {
             isValidUser = false;
             errors.add("Email can not be left empty");
@@ -96,6 +96,14 @@ public class RegisterController extends App implements Initializable {
             errors.add("First Name can not be left empty");
         }
 
+        if (!isValidName(firstName.getText())) {
+            isValidUser = false;
+            errors.add("Invalid first name");
+        }
+        if (!isValidName(lastName.getText())) {
+            isValidUser = false;
+            errors.add("Invalid last name");
+        }
         if (lastName.getText().isEmpty()) {
             isValidUser = false;
             errors.add("Last Name can not be left empty");
@@ -105,6 +113,10 @@ public class RegisterController extends App implements Initializable {
             errors.add("Phone number can not be left empty");
         }
 
+        if (!isValidAustralianPhoneNumber(phoneNumber.getText())) {
+            isValidUser = false;
+            errors.add("Invalid phone number");
+        }
         if (password.getText().isEmpty()) {
             isValidUser = false;
             errors.add("Password can not be left empty");
@@ -152,7 +164,7 @@ public class RegisterController extends App implements Initializable {
     }
 
     public static boolean isValidEmail(String email) {
-
+        Pattern emailPattern = Pattern.compile(EMAIL_PATTERN);
         Matcher matcher = emailPattern.matcher(email);
         return matcher.matches();  // Returns true if email matches the pattern
     }
@@ -193,5 +205,39 @@ public class RegisterController extends App implements Initializable {
         }
 
         return false; // Email not found
+    }
+
+    /**
+     * Validates if the input phone number is a valid Australian phone number.
+     *
+     * @param phoneNumber The phone number to validate.
+     * @return true if valid, false otherwise.
+     */
+    public static boolean isValidAustralianPhoneNumber(String phoneNumber) {
+        // Compile the regex
+        Pattern pattern = Pattern.compile(AU_PHONE_REGEX);
+        Matcher matcher = pattern.matcher(phoneNumber);
+        // Return true if the phone number matches the regex
+        return matcher.matches();
+    }
+
+    /**
+     * Validates if the input name is valid based on the given criteria.
+     *
+     * @param name The name to validate.
+     * @return true if the name is valid, false otherwise.
+     */
+    public static boolean isValidName(String name) {
+        // Ensure the name is within an acceptable length range
+        if (name == null || name.length() < 1 || name.length() > 50) {
+            return false;
+        }
+
+        // Compile the regex
+        Pattern pattern = Pattern.compile(NAME_REGEX);
+        Matcher matcher = pattern.matcher(name);
+
+        // Return true if the name matches the regex
+        return matcher.matches();
     }
 }
