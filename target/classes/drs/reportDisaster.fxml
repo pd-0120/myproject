@@ -86,7 +86,7 @@
             <Label prefHeight="18.0" prefWidth="182.0" text="Disaster Occure Area" GridPane.rowIndex="1" />
             <Label prefHeight="18.0" prefWidth="182.0" text="Description" GridPane.rowIndex="2" />
             <Label prefHeight="18.0" prefWidth="182.0" text="Extent of Damage" GridPane.rowIndex="3" />
-            <Label prefHeight="18.0" prefWidth="182.0" text="Emergency Services Involved" GridPane.rowIndex="4" />
+            <Label prefHeight="18.0" prefWidth="182.0" text="Disaster category" GridPane.rowIndex="4" />
             <Label prefHeight="18.0" prefWidth="182.0" text="Potential Risks" GridPane.rowIndex="5" />
             <TextField fx:id="name" GridPane.columnIndex="1" />
             <TextField fx:id="area" GridPane.columnIndex="1" GridPane.rowIndex="1" />
